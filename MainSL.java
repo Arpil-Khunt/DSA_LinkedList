@@ -12,5 +12,9 @@ public class MainSL {
         list.printList();
         list.deletionLast();
         list.printList();
+        list.insertAtIndex(58, 2);
+        list.printList();
+        list.deleteAtIndex(3);
+        list.printList();
     }
 }

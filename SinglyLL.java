@@ -36,6 +36,21 @@ class SinglyLL {
         tail = newNode;
     }
 
+    public void insertAtIndex(int data, int idx) {
+
+        Node temp = head;
+        if (idx == 0 || head == null) {
+            insertFirst(data);
+            return;
+        }
+        for (int i = 1; i < idx; i++) {
+            temp = temp.next;
+        }
+        Node newNode = new Node(data);
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
+
     public void deletionFirst() {
         head = head.next;
     }
@@ -55,6 +70,22 @@ class SinglyLL {
         }
         tail = temp;
         tail.next = null;
+    }
+
+    public void deleteAtIndex(int idx) {
+        if (head == null) {
+            System.out.println("List is Empty");
+            return;
+        }
+        if (idx == 0 || head == tail) {
+            deletionFirst();
+            return;
+        }
+        Node temp = head;
+        for (int i = 1; i < idx; i++) {
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
     }
 
     public void printList() {
