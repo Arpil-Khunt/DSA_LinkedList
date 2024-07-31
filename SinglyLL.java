@@ -28,8 +28,33 @@ class SinglyLL {
             head = tail = newNode;
             return;
         }
+        if (head == tail) {
+            head = tail = null;
+            return;
+        }
         tail.next = newNode;
         tail = newNode;
+    }
+
+    public void deletionFirst() {
+        head = head.next;
+    }
+
+    public void deletionLast() {
+        Node temp = head;
+        if (head == null) {
+            System.out.println("List is Empty");
+            return;
+        }
+        if (head == tail) {
+            head = tail = null;
+            return;
+        }
+        while (temp.next != tail) {
+            temp = temp.next;
+        }
+        tail = temp;
+        tail.next = null;
     }
 
     public void printList() {
@@ -42,5 +67,6 @@ class SinglyLL {
             System.out.print(temp.data + "->");
             temp = temp.next;
         }
+        System.out.println("null");
     }
 }
