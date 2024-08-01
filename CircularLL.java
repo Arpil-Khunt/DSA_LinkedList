@@ -1,12 +1,12 @@
-public class DoublyLL {
+public class CircularLL {
     class Node {
         int data;
-        Node previous;
+
         Node next;
 
         Node(int data) {
             this.data = data;
-            this.previous = null;
+
             this.next = null;
         }
     }
@@ -20,9 +20,8 @@ public class DoublyLL {
             head = tail = newNode;
             return;
         }
-        head.previous = newNode;
         newNode.next = head;
-        newNode.previous = null;
+        tail.next = newNode;
         head = newNode;
     }
 
@@ -33,52 +32,40 @@ public class DoublyLL {
             return;
         }
         tail.next = newNode;
-        newNode.previous = tail;
-        newNode.next = null;
+        newNode.next = head;
         tail = newNode;
     }
 
-    public void deleteFirst() {
-        if (head == null) {
-            System.out.println("List is Empty");
-            return;
-        }
-        head = head.next;
-        head.previous = null;
-    }
-
-    public void deleteLast() {
-        if (head == null) {
-            System.out.println("List is Empty");
-            return;
-        }
-        tail = tail.previous;
-        tail.next = null;
-    }
-
-    public void printListF() {
+    public void delete(int data) {
         if (head == null) {
             System.out.println("List is Empty");
             return;
         }
         Node temp = head;
-        while (temp != null) {
-            System.out.print(temp.data + "->");
-            temp = temp.next;
+        if (temp.data == data) {
+            tail.next = head.next;
+            return;
         }
-        System.out.println("null");
+        do {
+            Node n = temp.next;
+            if (n.data == data) {
+                temp.next = n.next;
+                return;
+            }
+            temp = temp.next;
+        } while (temp != head);
     }
 
-    public void printListR() {
+    public void display() {
         if (head == null) {
             System.out.println("List is Empty");
             return;
         }
-        Node temp = tail;
-        while (temp != null) {
+        Node temp = head;
+        do {
             System.out.print(temp.data + "->");
-            temp = temp.previous;
-        }
+            temp = temp.next;
+        } while (temp != head);
         System.out.println("null");
     }
 }
