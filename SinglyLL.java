@@ -51,6 +51,25 @@ class SinglyLL {
         temp.next = newNode;
     }
 
+    //Insert using recursion
+    public void insertRec(int idx, int value){
+         if(idx == 0){
+             Node newNode = new Node(value,head);
+             head = newNode;
+             return;
+         }
+         insertRecSearch(idx,value,head);
+    }
+    private Node insertRecSearch(int idx, int value, Node temp){
+         if(idx == 0){
+             Node newNode = new Node(value,temp);
+             return newNode;
+         }
+
+         temp.next = insertRecSearch(idx-1,value,temp.next);
+        return temp;
+    }
+
     public void deletionFirst() {
         head = head.next;
     }
