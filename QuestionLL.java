@@ -30,4 +30,28 @@ public class QuestionLL{
          }
          removeElement(temp.next);
     }
+  //merge two Sorted LinkedList
+    public static void mergeLL(SinglyLL list1, SinglyLL list2){
+         Node f = list1.head;
+         Node s = list2.head;
+        SinglyLL ans = new SinglyLL();
+        while(f != null && s != null){
+            if(f.data <= s.data){
+               ans.insertLast(f.data);
+               f = f.next;
+            }else{
+                ans.insertLast(s.data);
+                s = s.next;
+            }
+        }
+        while(f != null){
+            ans.insertLast(f.data);
+            f = f.next;
+        }
+        while(s != null){
+            ans.insertLast(s.data);
+            s = s.next;
+        }
+        ans.printList();
+    }
 }
