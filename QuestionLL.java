@@ -54,4 +54,21 @@ public class QuestionLL{
         }
         ans.printList();
     }
+
+  //find a linkedlist has a cycle or not use fast pointer and slow pointer 
+  public boolean hasCycle(ListNode head) {
+        ListNode fast = head,slow = head;
+        
+        while(fast != null && fast.next != null){
+           
+           fast = fast.next.next;
+           slow = slow.next;
+           if(fast == slow){
+            return true;
+           }
+        }
+        return false;
+    }
 }
+
+
